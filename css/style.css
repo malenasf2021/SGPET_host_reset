@@ -1,0 +1,213 @@
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Arial, sans-serif; }
+
+body {
+    background: linear-gradient(135deg, #1e3a5f, #2c5f7c);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+body.panel {
+    display: block;
+    background-color: #f0f2f5;
+    padding: 0;
+}
+
+.login-box {
+    background: #fff;
+    padding: 40px 35px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+    width: 100%;
+    max-width: 380px;
+}
+
+.login-box h1 {
+    color: #1e3a5f;
+    font-size: 22px;
+    margin-bottom: 4px;
+    text-align: center;
+}
+
+.login-box p.subtitle {
+    text-align: center;
+    color: #666;
+    font-size: 13px;
+    margin-bottom: 25px;
+}
+
+.login-box label {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 14px;
+    color: #333;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 18px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.login-box input:focus { outline: none; border-color: #2c5f7c; }
+
+.login-box button {
+    width: 100%;
+    padding: 11px;
+    background: #1e3a5f;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.login-box button:hover { background: #2c5f7c; }
+
+.error-msg {
+    background: #fdecea;
+    color: #b3261e;
+    padding: 10px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+/* ---- Paneles (admin / docente / estudiante) ---- */
+.topbar {
+    background: #1e3a5f;
+    color: #fff;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.topbar h2 { font-size: 18px; }
+.topbar a {
+    color: #fff;
+    background: #b3261e;
+    padding: 8px 16px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 13px;
+}
+
+.container { max-width: 1150px; margin: 30px auto; padding: 0 20px; }
+
+.badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+    color: #fff;
+    margin-left: 8px;
+}
+.badge.admin { background: #b3261e; }
+.badge.docente { background: #b8860b; }
+.badge.estudiante { background: #2e7d32; }
+.badge.disp-disponible { background: #2e7d32; }
+.badge.disp-reservado { background: #b8860b; }
+.badge.disp-prestado { background: #1e5aa8; }
+.badge.disp-en_mantenimiento { background: #8a5a00; }
+.badge.disp-dado_de_baja { background: #6b6b6b; }
+.badge.cond-funcional { background: #2e7d32; }
+.badge.cond-dañado { background: #b3261e; }
+.badge.cond-en_reparacion { background: #b8860b; }
+.badge.cond-kit_incompleto { background: #8a5a00; }
+.badge.activo-si { background: #2e7d32; }
+.badge.activo-no { background: #6b6b6b; }
+.badge.res-pendiente { background: #b8860b; }
+.badge.res-convertida { background: #1e5aa8; }
+.badge.res-cancelada { background: #6b6b6b; }
+.badge.res-vencida { background: #b3261e; }
+.badge.pre-activo { background: #1e5aa8; }
+.badge.pre-atrasado { background: #b3261e; }
+.badge.pre-devuelto { background: #2e7d32; }
+.badge.grav-leve { background: #b8860b; }
+.badge.grav-media { background: #8a5a00; }
+.badge.grav-grave { background: #b3261e; }
+.badge.leida-si { background: #6b6b6b; }
+.badge.leida-no { background: #1e5aa8; }
+
+/* --- Notificaciones y sanciones --- */
+.notif { padding: 10px 12px; border-radius: 6px; margin-bottom: 8px; font-size: 13px; border: 1px solid #e0e0e0; }
+.notif.no-leida { background: #eaf2fb; border-color: #b7cfe0; }
+.notif small { display: block; color: #888; margin-top: 4px; }
+.sancion-aviso { background:#fdecea; border:1px solid #f3b7b0; color:#b3261e; padding: 14px; border-radius: 8px; margin-bottom: 20px; }
+
+/* --- Selector de equipo con miniatura de disponibilidad --- */
+.form-page textarea {
+    width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 8px;
+    font-size: 14px; font-family: inherit; resize: vertical;
+}
+.checkbox-row { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+.checkbox-row input { width: auto; margin: 0; }
+
+.card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    margin-bottom: 20px;
+}
+.card h3 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #1e3a5f;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+table { width: 100%; border-collapse: collapse; background: #fff; margin-top: 15px; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #eee; text-align: left; font-size: 14px; }
+th { background: #f2f5f7; color: #1e3a5f; }
+
+.btn {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+}
+.btn-verde  { background: #2e7d32; color: #fff; }
+.btn-azul   { background: #1e3a5f; color: #fff; }
+.btn-editar { background: #eef2f7; color: #1e3a5f; border: 1px solid #c7d2de; }
+.btn-eliminar { background: #fdecea; color: #b3261e; border: 1px solid #f3b7b0; }
+.btn-sm { padding: 4px 9px; font-size: 12px; }
+
+.mensaje-ok { background:#eaf7ec; border:1px solid #b7e0bd; color:#256029; }
+.mensaje-error { background:#fdecea; border:1px solid #f3b7b0; color:#b3261e; }
+.mensaje-info { background:#eaf2fb; border:1px solid #b7cfe0; color:#1e3a5f; }
+
+.nota { font-size: 12px; color: #777; margin-top: 10px; }
+
+/* --- Formularios de alta/edición --- */
+.form-page {
+    max-width: 480px;
+    margin: 40px auto;
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+.form-page h2 { color: #1e3a5f; margin-bottom: 20px; }
+.form-page .input-group { margin-bottom: 16px; }
+.form-page .input-group label { display:block; font-size:13px; margin-bottom:5px; color:#333; }
+.form-page .input-group input,
+.form-page .input-group select {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+.form-page .acciones { display: flex; gap: 10px; margin-top: 20px; }
