@@ -80,6 +80,12 @@ mismo schema, pero sin esas líneas iniciales).
      cambiá el orden por id_usuario/id_equipo descendente para
      encontrarlo rápido.
 
+CÓMO RESTAURAR LA BD A SU ESTADO ORIGINAL
+   - Entrá a phpMyAdmin desde el panel de InfinityFree.
+   - Elegí tu base if0_43044591_sgpet en la columna izquierda.
+   - Andá a la pestaña Importar, elegí sgpet_reset_hosting.sql y tocá Continuar.
+   - Ese archivo está guardado en tu pc junto al otro schema, en la carpeta sql/ del proyecto. 
+
 Problemas típicos en InfinityFree
 - "Error de conexión a la base de datos": casi siempre es el host (te
   quedó "localhost" en vez de sql123.infinityfree.com) o una contraseña
