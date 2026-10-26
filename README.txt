@@ -80,12 +80,6 @@ mismo schema, pero sin esas líneas iniciales).
      cambiá el orden por id_usuario/id_equipo descendente para
      encontrarlo rápido.
 
-CÓMO RESTAURAR LA BD A SU ESTADO ORIGINAL
-   - Entrá a phpMyAdmin desde el panel de InfinityFree.
-   - Elegí tu base if0_43044591_sgpet en la columna izquierda.
-   - Andá a la pestaña Importar, elegí sgpet_reset_hosting.sql y tocá Continuar.
-   - Ese archivo está guardado en tu pc junto al otro schema, en la carpeta sql/ del proyecto. 
-
 Problemas típicos en InfinityFree
 - "Error de conexión a la base de datos": casi siempre es el host (te
   quedó "localhost" en vez de sql123.infinityfree.com) o una contraseña
@@ -107,6 +101,51 @@ Problemas típicos en InfinityFree
   mirando solo la primera página de resultados en phpMyAdmin, no que
   el insert haya fallado.
 
+CÓMO REINICIAR LA BASE DE DATOS (volver al estado inicial)
+Sirve para dejar el sistema limpio antes de una demo, de la defensa o
+de una nueva ronda de pruebas. Se usa el script sql/sgpet_reset_hosting.sql:
+borra las 8 tablas (usuario, equipo, reserva, prestamo, falla, sancion,
+notificacion, log_auditoria) y las vuelve a crear con los datos de prueba
+originales.
+ 
+QUÉ SE PIERDE Y QUÉ QUEDA
+  · Se pierde TODO lo cargado durante las pruebas: préstamos, reservas,
+    fallas, sanciones, notificaciones, auditoría, y los usuarios o
+    equipos que hayas agregado a mano.
+  · Las contraseñas vuelven a la de prueba (Sgpet2026!), también las que
+    hayas cambiado. Si compartís el link del hosting, volvé a cambiar la
+    de los administradores.
+  · Queda la base inicial: 18 usuarios y 27 equipos ficticios, sin
+    préstamos ni reservas.
+ 
+EN EL HOSTING (InfinityFree)
+1. Entrá al panel -> "MySQL Databases" -> abrí phpMyAdmin.
+2. Elegí TU base (if0_..._sgpet) en la columna izquierda. No hace falta
+   vaciarla ni borrarla antes: el script lo hace solo.
+3. Pestaña "Importar" -> "Elegir archivo" -> sql/sgpet_reset_hosting.sql
+   (desde tu computadora) -> "Continuar".
+4. Esperá el mensaje de importación exitosa. Es un script que no usa
+   CREATE DATABASE ni USE, por eso funciona en el hosting gratuito.
+5. Verificá: cerrá sesión e iniciá con 10001 / Sgpet2026!. El panel
+   debe mostrar 27 equipos y 18 usuarios, y ningún préstamo.
+ 
+EN XAMPP (local)
+1. En phpMyAdmin (http://localhost/phpmyadmin) creá una base vacía con
+   cotejamiento utf8mb4_spanish_ci, o usá la que ya tenías (la que
+   figura en DB_NAME de config.php).
+2. Elegí esa base -> "Importar" -> sql/sgpet_reset_hosting.sql.
+ 
+IMPORTANTE
+  · El archivo sgpet_reset_hosting.sql NO se sube a htdocs: se usa solo
+    desde phpMyAdmin, importándolo desde tu computadora. Dejarlo en el
+    servidor público expondría la estructura y los datos de la base.
+  · No se puede deshacer. Si querés conservar algo (por ejemplo una
+    demo cargada), exportá antes la base desde phpMyAdmin -> "Exportar".
+  · Después de reiniciar, cualquier sesión que estuviera abierta apunta
+    a datos que ya no existen: cerrá sesión y volvé a entrar.
+  · Si la importación da error de conexión o de permisos, revisá que
+    elegiste tu base en phpMyAdmin antes de importar (y no la raíz del
+    servidor).
 
 IDENTIFICADOR DE LOGIN
   · id_usuario: clave primaria interna, autoincremental, de 5 dígitos.
